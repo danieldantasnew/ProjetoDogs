@@ -36,6 +36,11 @@ a {
   text-decoration: none;
 }
 
+.error {
+  margin-top: 12px;
+  color: #f31;
+}
+
 .content {
   margin-top: 4rem;
   min-height: calc(80vh + 9rem);

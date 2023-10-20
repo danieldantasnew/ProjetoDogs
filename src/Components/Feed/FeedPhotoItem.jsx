@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './FeedPhotoItem.module.css';
+import Skeleton from '../../Helper/Skeleton';
 
 const FeedPhotoItem = ({photo, acessos, titulo, setModalPhoto}) => {
 
@@ -9,7 +10,7 @@ const FeedPhotoItem = ({photo, acessos, titulo, setModalPhoto}) => {
 
   return (
       <li className={style.photo} onClick={handleClick}>
-        <div style={{backgroundImage: `url(${photo.src})`}} aria-label={titulo} className={style.imagem}></div>
+        <Skeleton src={photo.src} alt={titulo} /> 
         <div className={style.visualiza}>{acessos}</div>
       </li>
   )

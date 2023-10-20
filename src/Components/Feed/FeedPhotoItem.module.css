@@ -6,13 +6,6 @@
   display: grid;
 }
 
-.imagem {
-  grid-area: 1/1;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .visualiza::before {
   content: '';
   display: block;

@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './Feed.module.css';
 import Head from '../../Helper/Head';
 import FeedPhotos from './FeedPhotos';
 import FeedModal from './FeedModal';

@@ -1,7 +1,7 @@
 import React from 'react';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTOS_GET } from '../../Api';
-import style from './Feed.module.css';
+import style from './FeedPhotos.module.css';
 import FeedPhotoItem from './FeedPhotoItem';
 
 const FeedPhotos = ({setModalPhoto}) => {

@@ -9,6 +9,7 @@ export const UserStorage = ({children}) => {
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [erro, setErro] = React.useState(null);
+  const [tokenUser, setTokenUser] = React.useState(null);
 
   React.useEffect(()=> {
     async function autoLogin(){
@@ -20,6 +21,7 @@ export const UserStorage = ({children}) => {
           const validade = await fetch(url, options);
           if(!validade.ok) throw new Error('Token Inválido');
           await getUser(tokenLocal);
+          setTokenUser(tokenLocal);
          }
          catch(erro){
           userLogout();
@@ -54,6 +56,7 @@ export const UserStorage = ({children}) => {
       if(!dados.ok) throw new Error('Usuário incorreto ou não existe.');
       const {token}= await dados.json();
       localStorage.setItem('token', token);
+      setTokenUser(token);
       await getUser(token);
     }
     catch(erro){
@@ -74,7 +77,7 @@ export const UserStorage = ({children}) => {
   }
 
   return (
-    <UserContext.Provider value={{userLogin, userLogout, dataUser: dataUser, login, erro, loading, setErro }}>
+    <UserContext.Provider value={{userLogin, userLogout, dataUser: dataUser, login, erro, loading, setErro, tokenUser: tokenUser }}>
       {children}
     </UserContext.Provider>
   )

@@ -35,6 +35,7 @@ const useFetch = () => {
     carregando,
     erro,
     data,
+    setErro,
     request
   }
 }
