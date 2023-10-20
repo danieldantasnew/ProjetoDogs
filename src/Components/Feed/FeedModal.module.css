@@ -35,12 +35,13 @@
 @media (max-width: 60rem) {
   .photo {
     display: grid;
-    grid-template-columns: minmax(auto, 80%);
+    grid-template-columns: minmax(20rem,40rem);
     grid-template-rows: 1fr 2fr;
-    max-width: 90%;
+    max-width: 93%;
     height: auto;
     max-height: 80%;
     overflow-y: auto;
+    margin-right: 15px;
   }
   
 }
