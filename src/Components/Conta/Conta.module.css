@@ -1,0 +1,15 @@
+.Conta {
+  max-width: 50rem;
+  min-height: 100vh;
+  margin: 2vh auto;
+  padding: 0 1rem;
+}
+
+.headerConta {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}

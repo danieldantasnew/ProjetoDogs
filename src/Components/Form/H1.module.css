@@ -1,0 +1,18 @@
+h1 {
+  font-size: 3rem;
+  font-family: var(--type-second);
+  position: relative;
+}
+
+h1::before {
+  content: '';
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--amarelo);
+  position: absolute;
+  top: 32px;
+  left: -5px;
+  z-index: -1;
+  border-radius: 4px;
+}

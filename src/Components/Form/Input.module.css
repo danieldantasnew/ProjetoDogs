@@ -1,0 +1,27 @@
+.Input {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.Input label {
+  font-size: 1rem;
+}
+
+.Input input{
+  padding: 0.8rem;
+  width: 100%;
+  margin-top: 6px;
+  background-color: var(--branco-gelo);
+  border-radius: 6px;
+  border: 1px solid var(--branco-gelo);
+  font-size: 1rem;
+}
+
+.Input input:hover,
+.Input input:focus
+{
+  outline: none;
+  border: 1px solid var(--amarelo);
+  background-color: white;
+  box-shadow: 0px 0px 2px 3px var(--amarelo-claro);
+}

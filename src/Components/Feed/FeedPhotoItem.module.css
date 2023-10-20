@@ -1,0 +1,47 @@
+.photo {
+  cursor: pointer;
+  color: var(--branco-gelo);
+  border-radius: .2rem;
+  overflow: hidden;
+  display: grid;
+}
+
+.imagem {
+  grid-area: 1/1;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.visualiza::before {
+  content: '';
+  display: block;
+  background: url('../../../public/Assets/visualizacao.svg');
+  width: 16px;
+  height: 10px;
+}
+
+.visualiza {
+  grid-area: 1/1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: .3rem;
+  background: rgba(0,0,0, .4);
+}
+
+.photo:hover .visualiza {
+  display: flex;
+}
+
+.photo:nth-child(2) {
+  grid-column: 2/4;
+  grid-row: span 2;
+}
+
+@media (max-width: 40rem) {
+  .photo:nth-child(2) {
+    grid-column: initial;
+    grid-row: initial;
+  }
+}

@@ -1,0 +1,63 @@
+.comments {
+  background: white;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  padding: 2rem;
+}
+
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  opacity: 0.5;
+}
+
+.autor {
+  
+}
+
+.visualizacao::before {
+  background-image: url('../../../../public/Assets/visualizacao-black.svg');
+  display: block;
+  content: '';
+  height: 10px;
+  width: 16px;
+}
+
+.visualizacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .4rem;
+}
+
+.idadePeso {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.idadePeso span {
+  display: flex;
+  gap: .4rem;
+}
+
+.idadePeso span::before {
+  height: 20px;
+  width: 2px;
+  content: '';
+  display: block;
+  background-color: #333;
+}

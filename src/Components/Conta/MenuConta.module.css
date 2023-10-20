@@ -1,0 +1,107 @@
+.Navegacao {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.NavegacaoMenu {
+  display: none;
+}
+
+.NavegacaoMenuActive {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 16px;
+  gap: 16px;
+  top: 68px;
+  right: 0px;
+  box-shadow: 0px 2px 1px .8px rgba(0,0,0,0.1);
+  z-index: 2000;
+}
+
+.NavegacaoMenuActive a{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+
+.Navegacao a {
+  border-radius: .2rem;
+  padding: 4px;
+  height: 40px;
+  width: 40px;
+  background-color: var(--branco-gelo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Navegacao a:hover {
+  border: 1px solid #333;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 3px var(--branco-gelo);
+
+}
+
+.Navegacao a:global(.active), .Navegacao a:focus {
+  border: 1px solid var(--amarelo);
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 3px var(--amarelo-claro);
+}
+
+
+.Navegacao a:global(.active) > svg > * {
+  fill: var(--amarelo);
+}
+
+.btnMobile {
+  background: var(--branco-gelo);
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: .2rem;
+  transition: .2s;
+}
+
+.btnMobile::after {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
+}
+
+
+.btnMobile:hover, 
+.btnMobile:focus,
+.btnMobileActive {
+  border: 1px solid var(--amarelo);
+  color: var(--amarelo);
+  background: transparent;
+  box-shadow: 0px 0px 1px 3px var(--amarelo-claro);
+}
+
+.btnMobileActive::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
+  transform: rotate(-90deg);
+  transition: .3s;
+}

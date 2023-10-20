@@ -1,0 +1,24 @@
+.Botao {
+  margin-top: 1rem;
+  min-width: 8rem;
+  font-size: 1rem;
+  padding: .8rem 1.2rem;
+  background-color: var(--amarelo);
+  border: 1px solid white;
+  border-radius: 8px;
+  color: var(--cor-fonte-footer);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.Botao:hover,
+.Botao:focus {
+  box-shadow: 0 0 0 3px var(--amarelo-claro), 0 0 0 4px var(--amarelo);
+  border: 1px solid var(--amarelo);
+  outline: none;
+}
+
+.Botao:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}

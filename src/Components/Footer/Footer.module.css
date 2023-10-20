@@ -1,0 +1,15 @@
+.Footer {
+  height: 9rem;
+  width: 100%;
+  background-color: var(--amarelo);
+  color: var(--cor-fonte-footer);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.Footer :global(svg) > * {
+  fill: var(--cor-fonte-footer);
+}
