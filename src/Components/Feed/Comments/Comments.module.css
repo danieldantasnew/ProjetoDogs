@@ -1,11 +1,11 @@
 .comments {
   background: white;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  padding: 2rem;
+  padding: 2rem 1.3rem 1.2rem 1.3rem;
   overflow-y: auto;
 }
 
@@ -22,6 +22,19 @@
   opacity: 0.5;
 }
 
+.btnDelete {
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: .2rem;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.btnDelete:hover {
+  background-color: transparent;
+  border: 1px solid #333;
+  transition: .3s;
+}
 .autor {
   
 }
@@ -68,6 +81,7 @@
   align-self: flex-start;
   margin-top: 1rem;
   height: 100%;
+  margin-bottom: 2vh;
 }
 
 .commentsUsers span {
@@ -78,4 +92,60 @@
 .inputComment {
   height: 70px;
   width: 100%;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  gap: .8rem;
+}
+
+.inputComment textarea{
+  height: 100%;
+  width: 100%;
+  resize: none;
+  outline: none;
+  border: 1px solid transparent;
+  background-color: #eee;
+  padding: .5rem;
+  border-radius: .2rem;
+  font-size: 1.2rem;
+}
+
+.inputComment textarea:hover,
+.inputComment textarea:focus
+{
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: .3s;
+  box-shadow: 0px 0px 0px 1.5px var(--amarelo), 0px 0px 1px 4px var(--amarelo-claro);
+}
+
+.inputComment textarea::placeholder {
+  font-size: 1.2rem;
+  font-family: var(--type-first);
+}
+
+.inputComment svg {
+  align-self: center;
+  justify-self: center;
+  height: 41px;
+  width: 53px;
+  cursor: pointer;
+}
+
+.inputComment svg:hover path {
+  fill: var(--amarelo-claro);
+  stroke: var(--amarelo);
+}
+
+.inputComment svg:hover > g > path{
+  fill: var(--amarelo-claro);
+  animation: latindo .8s infinite;
+}
+
+@keyframes latindo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
