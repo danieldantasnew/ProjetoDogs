@@ -7,6 +7,7 @@ const Erro = ({mensagem, telaInteira, setErro, setModalPhoto}) => {
     if(setErro){
       setModalPhoto(null);
       setErro(null);
+      location.reload();
     } 
   }
 

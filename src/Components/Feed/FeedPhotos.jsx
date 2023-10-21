@@ -24,4 +24,4 @@ const FeedPhotos = ({setModalPhoto}) => {
   )
 }
 
-export default FeedPhotos
+export default FeedPhotos;

@@ -1,7 +1,3 @@
-import { UserContext } from "./UserContext";
-import React from "react";
-
-
 export const URL_API = 'https://dogsapi.origamid.dev/json';
 
 export function TOKEN_POST(body) {
@@ -87,8 +83,7 @@ export function PHOTO_GET(id) {
   };
 }
 
-export function COMMENT_POST(id, body) {
-  const {tokenUser} = React.useContext(UserContext);
+export function COMMENT_POST(id, body, tokenUser) {
   return {
     url: `${URL_API}/api/comment/${id}`,
     options: {
