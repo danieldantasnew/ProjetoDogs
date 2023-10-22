@@ -6,10 +6,12 @@ import Comments from './Comments/Comments';
 import Skeleton from '../../Helper/Skeleton';
 import Carregando from '../../Helper/Carregando';
 import Error from '../../Helper/Erro';
+import useMedia from '../../Hooks/useMedia';
 
 const FeedModal = ({photo, setModalPhoto}) => {
   const { setErro, erro, carregando, request} = useFetch();
   const [photoData, setPhotoData] = React.useState(null);
+  const mobile = useMedia('(max-width: 40rem)');
 
   React.useEffect(()=> {
     async function fetchImagem() {

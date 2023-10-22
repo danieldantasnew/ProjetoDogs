@@ -1,6 +1,6 @@
 .carregandoModal {
   position: fixed;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.4);
   top: 0;
   left: 0;
   height: 100vh;
@@ -9,6 +9,14 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
-  color: #eee;
+}
+
+.osso {
+  background-color: rgba(255,255, 255, .5);
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

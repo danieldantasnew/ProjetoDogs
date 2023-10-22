@@ -6,6 +6,7 @@ import {ReactComponent as Dog} from '../../../../public/Assets/enviar.svg';
 import { COMMENT_POST } from '../../../Api';
 import useFetch from '../../../Hooks/useFetch';
 import Erro from '../../../Helper/Erro';
+import PhotoDelete from './PhotoDelete';
 
 const Comments = ({comentarios}) => {
 
@@ -40,7 +41,7 @@ const Comments = ({comentarios}) => {
           {<>
             {login ? 
             (dataUser.username === comentarios.photo.author) ?      
-              <button className={style.btnDelete}>Deletar</button>: 
+              <PhotoDelete idPhoto={comentarios.photo}/>: 
               <span className={style.autor}>@{comentarios.photo.author}</span> 
               : 
               <span className={style.autor}>@{comentarios.photo.author}</span>}

@@ -3,6 +3,8 @@ import useFetch from '../../Hooks/useFetch';
 import { PHOTOS_GET } from '../../Api';
 import style from './FeedPhotos.module.css';
 import FeedPhotoItem from './FeedPhotoItem';
+import Carregando from '../../Helper/Carregando';
+import Erro from '../../Helper/Erro';
 
 const FeedPhotos = ({setModalPhoto}) => {
   const [photos, setPhotos] = React.useState(null);
@@ -16,6 +18,9 @@ const FeedPhotos = ({setModalPhoto}) => {
     }
     photoFetch();
   }, [request]);
+
+  if(carregando) return <Carregando />
+  if(erro) return <Erro telaInteira={true}/>
 
   return (
     <ul className={`${style.Feed} container animationLeft`}>

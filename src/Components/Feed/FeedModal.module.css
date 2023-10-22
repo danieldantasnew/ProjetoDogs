@@ -22,7 +22,7 @@
   transform:  scale(.8);
   opacity: 0;
   animation: modal .4s forwards;
-  height: 36rem;
+  grid-auto-rows: 36rem;
 }
 
 @keyframes modal {
@@ -43,5 +43,4 @@
     overflow-y: auto;
     margin-right: 15px;
   }
-  
 }

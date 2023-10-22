@@ -1,0 +1,14 @@
+.btnDelete {
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: .2rem;
+  outline: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+}
+
+.btnDelete:hover {
+  background-color: transparent;
+  border: 1px solid #333;
+  transition: .2s;
+}
