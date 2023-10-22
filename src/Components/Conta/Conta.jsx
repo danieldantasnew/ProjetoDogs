@@ -29,17 +29,17 @@ const Conta = () => {
   if(login === false) return <Navigate to='/login' />
   
   return (
-    <div className={`${style.Conta} animationLeft`}>
-      <div className={style.headerConta}>
-        {nomeTitulo && <H1 title={nomeTitulo}/>}
-        <MenuConta/>
-      </div>
-      <Routes>
-        <Route path='/' element={<MinhaConta/>}/>
-        <Route path='estatisticas' element={<Stats/>}/>
-        <Route path='postar' element={<Postar/>}/>
-      </Routes>
-    </div>
+      <div className={`${style.Conta}`}>
+        <div className={style.headerConta}>
+          {nomeTitulo && <H1 title={nomeTitulo}/>}
+          <MenuConta/>
+        </div>
+        <Routes>
+          <Route path='/' element={<MinhaConta/>}/>
+          <Route path='estatisticas' element={<Stats/>}/>
+          <Route path='postar' element={<Postar/>}/>
+        </Routes>
+      </div>  
   )
 }
 

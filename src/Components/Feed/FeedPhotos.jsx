@@ -6,18 +6,20 @@ import FeedPhotoItem from './FeedPhotoItem';
 import Carregando from '../../Helper/Carregando';
 import Erro from '../../Helper/Erro';
 
-const FeedPhotos = ({setModalPhoto}) => {
+const FeedPhotos = ({user, page, setModalPhoto, setInfinite}) => {
   const [photos, setPhotos] = React.useState(null);
   const {carregando, erro, request, data} = useFetch();
 
   React.useEffect(()=> {
     async function photoFetch() {
-      const {url, options} = PHOTOS_GET({page: 1, user: 0, total: 6});
+      const total = 6;
+      const {url, options} = PHOTOS_GET({page, user, total});
       const { response, json } = await request(url, options);
       setPhotos(json);
+      if(response && response.ok && json.length < total) setInfinite(false);
     }
     photoFetch();
-  }, [request]);
+  }, [request, user, page, setInfinite]);
 
   if(carregando) return <Carregando />
   if(erro) return <Erro telaInteira={true}/>
