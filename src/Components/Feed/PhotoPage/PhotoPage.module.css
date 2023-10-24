@@ -1,0 +1,17 @@
+.photopage {
+    display: flex;
+}
+
+.photopage > div{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+}
+
+.photopage div > img {
+    border-radius: 8px;
+}
+
+.photopage form{
+    padding: .6rem;
+}

@@ -22,8 +22,9 @@
   opacity: 0.5;
 }
 
-.autor {
-  
+.autor:hover {
+  text-decoration: underline;
+  transition: .2s;
 }
 
 .visualizacao::before {

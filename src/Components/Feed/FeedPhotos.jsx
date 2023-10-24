@@ -8,7 +8,7 @@ import Erro from '../../Helper/Erro';
 
 const FeedPhotos = ({user, page, setModalPhoto, setInfinite}) => {
   const [photos, setPhotos] = React.useState(null);
-  const {carregando, erro, request, data} = useFetch();
+  const {carregando, erro, request} = useFetch();
 
   React.useEffect(()=> {
     async function photoFetch() {

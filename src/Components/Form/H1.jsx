@@ -1,9 +1,9 @@
 import React from 'react';
 import './H1.module.css';
 
-const H1 = ({title}) => {
+const H1 = ({title, estilo}) => {
   return (
-    <h1>{title}</h1>
+    <h1 style={estilo}>{title}</h1>
   )
 }
 

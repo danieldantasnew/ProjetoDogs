@@ -5,10 +5,12 @@ import { UserStorage } from './UserContext';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import NotFound from './Helper/NotFound';
+import Perfil from './Components/Conta/Perfil/Perfil';
 import Feed from './Components/Feed/Feed';
 import Login from './Components/Login/Login';
 import Conta from './Components/Conta/Conta';
 import ProtectedRoute from './Helper/ProtectedRoute';
+import PhotoPage from './Components/Feed/PhotoPage/PhotoPage';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
             <Routes>
               <Route path='/' element={<Feed/>}/>
               <Route path='/login/*' element={<Login/>}/>
+              <Route path='/foto/:id' element={<PhotoPage/>} />
+              <Route path='/perfil/:user' element={<Perfil/>} />
               <Route path='/conta/*' element={
               <ProtectedRoute>
                 <Conta/>

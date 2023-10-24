@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useLocation} from 'react-router-dom';
 import style from './Conta.module.css';
 import H1 from '../Form/H1';
 import MinhaConta from './MinhaConta';
+import NotFound from '../../Helper/NotFound';
 import Stats from './Stats';
 import Postar from './Postar';
 import {UserContext} from '../../UserContext';
@@ -11,7 +12,7 @@ import MenuConta from './MenuConta';
 const Conta = () => {
   const parametros = useLocation();
   const [nomeTitulo, setNomeTitulo] = React.useState('');
-  const {login } = React.useContext(UserContext);
+  const { login } = React.useContext(UserContext);
 
   React.useEffect(()=> {
     switch (parametros.pathname) {
@@ -38,6 +39,7 @@ const Conta = () => {
           <Route path='/' element={<MinhaConta/>}/>
           <Route path='estatisticas' element={<Stats/>}/>
           <Route path='postar' element={<Postar/>}/>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </div>  
   )

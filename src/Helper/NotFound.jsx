@@ -2,7 +2,7 @@ import React from 'react'
 
 const Erro = () => {
   return (
-    <div>EERRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOOOO</div>
+    <div className={`container`}>EERRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOOOO</div>
   )
 }
 

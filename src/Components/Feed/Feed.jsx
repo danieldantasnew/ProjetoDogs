@@ -38,7 +38,7 @@ const Feed = ({user}) => {
   return (
     <div style={{marginTop: '2rem'}}>
       <Head title='Fotos' descricao='Página inicial, feed de fotos.'/>
-      {modalPhoto && <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto}/>}
+      {modalPhoto && <FeedModal photoID={modalPhoto.id} setModalPhoto={setModalPhoto}/>}
       {pages.map((pagina)=> 
       <FeedPhotos 
         setModalPhoto={setModalPhoto}

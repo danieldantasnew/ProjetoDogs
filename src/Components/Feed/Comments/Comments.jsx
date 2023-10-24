@@ -7,6 +7,7 @@ import { COMMENT_POST } from '../../../Api';
 import useFetch from '../../../Hooks/useFetch';
 import Erro from '../../../Helper/Erro';
 import PhotoDelete from './PhotoDelete';
+import { Link } from 'react-router-dom';
 
 const Comments = ({comentarios}) => {
 
@@ -42,13 +43,13 @@ const Comments = ({comentarios}) => {
             {login ? 
             (dataUser.username === comentarios.photo.author) ?      
               <PhotoDelete idPhoto={comentarios.photo}/>: 
-              <span className={style.autor}>@{comentarios.photo.author}</span> 
+              <Link to={`/perfil/${comentarios.photo.author}`}><span className={style.autor}>@{comentarios.photo.author}</span></Link> 
               : 
-              <span className={style.autor}>@{comentarios.photo.author}</span>}
+              <Link to='/perfil/'><span className={style.autor}>@{comentarios.photo.author}</span></Link>}
             <span className={style.visualizacao}>{comentarios.photo.acessos}</span>
           </>}
         </div>
-        {<H1 title={comentarios.photo.title}/>}
+        {<Link to={`/foto/${comentarios.photo.id}`}><H1 title={comentarios.photo.title}/></Link>}
         {<div className={style.idadePeso}>
           <span>{comentarios.photo.peso} Kg</span>
           <span>{comentarios.photo.idade} {comentarios.photo.idade == 1 ? 'ano' : 'anos'}</span>
