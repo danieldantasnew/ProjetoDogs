@@ -15,10 +15,12 @@ const Comments = ({comentarios}) => {
   const [comentario, setComentario] = React.useState('');
   const [allComents, setAllComments] = React.useState([]); 
   const {erro, request} = useFetch();
+  const commentRef = React.useRef();
 
   React.useEffect(()=>{
     if(comentarios) {
       setAllComments(comentarios.comments);
+      commentRef.current.scrollTo(0, commentRef.current.getBoundingClientRect().height);
     }
   }, [comentarios]);
 
@@ -55,7 +57,7 @@ const Comments = ({comentarios}) => {
           <span>{comentarios.photo.idade} {comentarios.photo.idade == 1 ? 'ano' : 'anos'}</span>
         </div>}
       </div>
-      <ul className={style.commentsUsers}>
+      <ul className={style.commentsUsers} ref={commentRef}>
         {allComents.length == 0 ? 'Sem comentários': allComents.map((comentario)=> 
           <li key={comentario.comment_ID}>
             <div><span>{comentario.comment_author}:</span> {comentario.comment_content}</div>
