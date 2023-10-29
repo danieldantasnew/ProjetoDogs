@@ -6,24 +6,33 @@ import { useValidate } from '../../Hooks/useValidate';
 import Head from '../../Helper/Head';
 import { LOST_PASSWORD } from '../../Api';
 import useFetch from '../../Hooks/useFetch';
+import Erro from '../../Helper/Erro';
 
 const PerdeuSenha = () => {
-  const userEmail = useValidate();
-  const {request} = useFetch();
+  const login = useValidate();
+  const [mensagem, setMensagem] = React.useState(null);
+  const {erro, carregando, request} = useFetch();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    if(userEmail.validate()) {
-      const {url, options} = LOST_PASSWORD({});
+    if(login.validate()) {
+      const {url, options} = LOST_PASSWORD({
+        login: login.dado, 
+        url: window.location.href.replace('perdeusenha', 'reset')});
+      const { response, json } = await request(url, options);
+      if(response.ok) setMensagem(json);
     }
   }
 
   return (
     <form className='animationLeft' onSubmit={handleSubmit}>
-      <Head title='Perdeu a senha' descricao='Recupe sua senha'/>
+      <Head title='Perdeu a senha' descricao='Recupere sua senha'/>
       <H1 title='Perdeu a senha?'/>
-      <Input nome="Email / Usuário" tipo='text' {...userEmail}/>
-      <Button nome='Enviar Email'/>
+      {mensagem ? <p style={{fontSize: '18px', color: 'green'}}>{mensagem}</p> : <>
+        <Input nome="Email / Usuário" tipo='text' {...login}/>
+        {carregando ? <Button disabled nome='Enviar Email'/> : <Button nome='Enviar Email'/>}
+        {erro && <Erro mensagem={erro}/>}
+        </>} 
     </form>
   )
 }

@@ -10,4 +10,3 @@ Currently, two official plugins are available:
 
 
 Arrumar as estatísticas.
-Arrumar reset senha
