@@ -22,3 +22,12 @@
   padding: 12px;
   border-radius: 8px;
 }
+
+@media (max-width: 40rem) {
+  .graficos {
+    grid-template-columns: 1fr;
+  }
+  .graficos p {
+    grid-column: initial;
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Erro.module.css';
+import PropTypes from 'prop-types';
 
 const Erro = ({mensagem, telaInteira, setErro, setModalPhoto}) => {
 
@@ -14,6 +15,15 @@ const Erro = ({mensagem, telaInteira, setErro, setModalPhoto}) => {
   return (
     <div className={telaInteira ? style.erro : `error`} onClick={handleErro}>{mensagem}</div>
   )
+}
+
+Erro.defaultProps = {
+  telaInteira: false,
+}
+
+Erro.propTypes = {
+  telaInteira: PropTypes.bool,
+  mensagem: PropTypes.string,
 }
 
 export default Erro;

@@ -25,14 +25,14 @@ const LoginReset = () => {
   }
 
   return (
-    <div>
+    <section>
       <H1 title='Resete a Senha'/>
       <form onSubmit={handleSubmit}>
         <Input nome='Nova Senha' tipo='password' {...senha}/>
         <Button nome='Alterar Senha'/>
         {erro && <Erro mensagem={erro}/>}
       </form>
-    </div>
+    </section>
   )
 }
 

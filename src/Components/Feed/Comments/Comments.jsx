@@ -20,9 +20,15 @@ const Comments = ({comentarios}) => {
   React.useEffect(()=>{
     if(comentarios) {
       setAllComments(comentarios.comments);
-      commentRef.current.scrollTo(0, commentRef.current.getBoundingClientRect().height);
+      commentRef.current.scrollTop = commentRef.current.scrollHeight;
     }
   }, [comentarios]);
+
+  React.useEffect(()=>{
+    if(allComents && commentRef.current) {
+      commentRef.current.scrollTop = commentRef.current.scrollHeight;
+    }
+  }, [allComents]);
 
 
   async function handleClick(event) {

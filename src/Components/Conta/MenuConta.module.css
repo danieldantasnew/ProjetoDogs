@@ -12,6 +12,7 @@
   position: absolute;
   display: flex;
   flex-direction: column;
+  background-color: white;
   padding: 6px 16px;
   gap: 16px;
   top: 68px;
@@ -26,6 +27,31 @@
   justify-content: flex-start;
   align-items: center;
   gap: 6px;
+  margin-bottom: 4px;
+}
+
+.NavegacaoMenuActive a:global(.active) > svg > * {
+  fill: var(--amarelo);
+}
+
+.NavegacaoMenuActive a:hover > svg > * {
+  fill: var(--amarelo);
+}
+
+.NavegacaoMenuActive li::after{
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #eee;
+}
+
+.NavegacaoMenuActive li:last-child::after{
+  display: none;
+}
+
+li {
+  list-style: none;
 }
 
 .Navegacao a {
