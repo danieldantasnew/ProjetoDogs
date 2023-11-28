@@ -1,13 +1,23 @@
 import React from 'react';
 import Head from '../../Helper/Head';
+import Carregando from '../../Helper/Carregando';
+import Erro from '../../Helper/Erro';
 import FeedPhotos from './FeedPhotos';
 import FeedModal from './FeedModal';
-import PropTypes, { string }  from 'prop-types';
+import PropTypes from 'prop-types';
+import {useDispatch, useSelector} from 'react-redux';
+import { carregarNovasFotos, resetPhotos } from '../../store/reducers/feed';
+
 
 const Feed = ({user}) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
-  const [pages, setPages] = React.useState([1]);
-  const [infinite, setInfinite] = React.useState(true);
+  const {infinite, list, carregando, erro} = useSelector((state)=> state.feed);
+  const dispatch = useDispatch();
+
+  React.useEffect(()=> {
+    dispatch(resetPhotos());
+    dispatch(carregarNovasFotos({user, total: 6}));
+  }, [dispatch, user]);
 
   React.useEffect(()=> {
     let espere = false;
@@ -17,7 +27,7 @@ const Feed = ({user}) => {
         const height = (document.body.offsetHeight - window.innerHeight ) * 0.75;
   
         if(heightScroll > height && !espere ) {
-          setPages((pages)=> [...pages, pages.length + 1]);
+          dispatch(carregarNovasFotos({user, total: 6}));
           espere = true;
           setTimeout(() => {
             espere = false;
@@ -33,23 +43,18 @@ const Feed = ({user}) => {
       window.removeEventListener('wheel', infiniteFunction);
       window.removeEventListener('scroll', infiniteFunction);
     }
-  }, [infinite]);
+  }, [infinite, dispatch, user]);
+
 
   return (
     <div style={{marginTop: '2rem'}}>
       <Head title='Fotos' descricao='Página inicial, feed de fotos.'/>
       {modalPhoto && <FeedModal photoID={modalPhoto.id} setModalPhoto={setModalPhoto}/>}
-      {pages.map((pagina)=> 
-      <FeedPhotos 
-        setModalPhoto={setModalPhoto}
-        setInfinite={setInfinite} 
-        key={pagina}
-        page={pagina}
-        user={user}
-      />)}
+      {list.length > 0 && <FeedPhotos setModalPhoto={setModalPhoto}/>}
+      {carregando && <Carregando/>}
+      {erro && <Erro/>}
       {!infinite && !user && <p style={{textAlign: 'center', padding: '2rem 0 4rem 0', color: 'var(--cor-fonte-footer)'}}>Não existem mais postagens.</p>}
     </div>
-
   )
 };
 
@@ -64,4 +69,4 @@ Feed.propTypes = {
   ]),
 }
 
-export default Feed
+export default Feed;

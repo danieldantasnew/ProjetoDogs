@@ -27,10 +27,18 @@
   display: flex;
 }
 
-.photo:nth-child(2) {
+.photo:nth-child(6n+2) {
   grid-column: 2/4;
   grid-row: span 2;
 }
+
+/*
+(6n+2) Significa que em um conjunto de 6 elementos, será feito a seguinte expressão:
+6x0+2 = 2
+6x1+2= 8
+e assim por diante...
+com isso será pegue sempre o segundo elemento a cada 6 elementos e com isso ele expande a foto.
+*/
 
 @media (max-width: 40rem) {
   .photo:nth-child(2) {
