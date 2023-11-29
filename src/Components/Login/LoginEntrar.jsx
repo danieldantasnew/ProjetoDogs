@@ -5,30 +5,23 @@ import Input from '../Form/Input';
 import Button from '../Form/Button';
 import { Link } from 'react-router-dom';
 import { useValidate } from '../../Hooks/useValidate';
-import { UserContext } from '../../UserContext';
 import Head from '../../Helper/Head';
 import Erro from '../../Helper/Erro';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../store/reducers/login';
 
 const LoginEntrar = () => {
   const username = useValidate('');
   const userPassword = useValidate('');
-  const { userLogin, erro, setErro, loading } = React.useContext(UserContext);
+  const dispatch = useDispatch();
+  const {carregando, erro} = useSelector((state)=> state.login.user);
+  const carregandoToken = useSelector((state)=> state.login.user.carregando);
 
-  React.useEffect(()=> {
-    if(erro){
-      setTimeout(()=>{
-        setErro('');
-      }, 4000);
-    }
-  }, [erro, setErro]);
 
   function handleSubmit(event){
     event.preventDefault();
     if(username.validate() && userPassword.validate()){
-      userLogin({
-        username: username.dado, 
-        password: userPassword.dado
-      });
+      dispatch(login({username: username.dado, password: userPassword.dado})); 
     }
   }
 
@@ -39,7 +32,7 @@ const LoginEntrar = () => {
         <H1 title='Login'/>
         <Input nome='Usuário' tipo='text' {...username}/>
         <Input nome='Senha' tipo='password' {...userPassword}/>
-        {loading && loading ?
+        {(carregandoToken || carregando) ?
         <Button disabled nome='Carregando...'/> : 
         <Button nome='Entrar'/>}
         <Erro mensagem={erro}/>

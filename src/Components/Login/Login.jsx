@@ -6,12 +6,14 @@ import Cadastro from './Cadastro';
 import PerdeuSenha from './PerdeuSenha';
 import Reset from './LoginReset';
 import NotFound from '../../Helper/NotFound';
-import { UserContext } from '../../UserContext';
+import { useSelector } from 'react-redux';
+
 
 const Login = () => {
-  const { login } = React.useContext(UserContext);
+  const {dados} = useSelector((state)=> state.login.user);
 
-  if(login === true) return <Navigate to='/conta' />
+
+  if(dados) return <Navigate to='/conta' />
 
   return (
     <section className={style.login}>

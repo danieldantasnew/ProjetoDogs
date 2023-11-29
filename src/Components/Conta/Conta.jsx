@@ -6,13 +6,13 @@ import MinhaConta from './MinhaConta';
 import NotFound from '../../Helper/NotFound';
 import Stats from './Stats';
 import Postar from './Postar';
-import {UserContext} from '../../UserContext';
 import MenuConta from './MenuConta';
+import { useSelector } from 'react-redux';
 
 const Conta = () => {
   const parametros = useLocation();
   const [nomeTitulo, setNomeTitulo] = React.useState('');
-  const { login } = React.useContext(UserContext);
+  const {dados} = useSelector((state)=> state.login.user);
 
   React.useEffect(()=> {
     switch (parametros.pathname) {
@@ -27,7 +27,7 @@ const Conta = () => {
     }
   }, [parametros]);
 
-  if(login === false) return <Navigate to='/login' />
+  if(!dados) return <Navigate to='/login' />
   
   return (
       <div className={`${style.Conta}`}>

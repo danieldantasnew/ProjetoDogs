@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const LoginReset = () => {
 
   const senha = useValidate('password');
-  const { carregando, erro, request} = useFetch();
+  const { erro, request} = useFetch();
   const navigate = useNavigate();
   
   async function handleSubmit(event) {
@@ -20,7 +20,7 @@ const LoginReset = () => {
     const key = parametros.get('key');
     const login = parametros.get('login')
     const {url, options} = RESET_PASSWORD({login, key, password: senha.dado});
-    const {response, json} = await request(url, options);
+    const {response} = await request(url, options);
     if(response.ok) navigate('/login');
   }
 

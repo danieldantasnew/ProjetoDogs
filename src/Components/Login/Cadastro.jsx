@@ -5,17 +5,19 @@ import Button from '../Form/Button';
 import { useValidate } from '../../Hooks/useValidate';
 import Head from '../../Helper/Head';
 import {USER_POST} from '../../Api';
-import { UserContext } from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
 import Erro from '../../Helper/Erro';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../store/reducers/login';
 
 const CriarConta = () => {
   
-  const {userLogin, loading} = React.useContext(UserContext);
+  const dispatch = useDispatch();
   const username = useValidate('');
   const validaEmail = useValidate('email');
   const validaSenha = useValidate('password');
   const { carregando, erro, request } = useFetch();
+  const loading = useSelector((state)=> state.login.user.carregando);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -25,7 +27,7 @@ const CriarConta = () => {
     if(username.validate() && validaEmail.validate() && validaSenha.validate()) {
       const {response} = await request(url, options);
       if(response.ok) {
-        await userLogin({username: username.dado, password: validaSenha.dado});
+        dispatch(login({username: username.dado, password: validaSenha.dado})); 
       }
     }
   }

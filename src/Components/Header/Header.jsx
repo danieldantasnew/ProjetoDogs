@@ -2,12 +2,11 @@ import React from 'react';
 import style from './Header.module.css';
 import { Link } from 'react-router-dom';
 import {ReactComponent as Dogs} from '../../../public/Assets/dogs.svg';
-import { UserContext } from '../../UserContext';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-  const { dataUser } = React.useContext(UserContext);
-
+  const header = useSelector((state)=> state.login.user.dados);
 
   return (
     <div className={`${style.Header}`}>
@@ -15,8 +14,8 @@ const Header = () => {
         <Link to="/" className= {style.Home}>
           <Dogs/>
         </Link>
-        {dataUser ?  
-        <Link to="/conta" className={style.Login}>{dataUser.username}</Link> :         
+        {header ?  
+        <Link to="/conta" className={style.Login}>{header.username}</Link> :         
         <Link to="/login" className={style.Login}>Login / Criar</Link>}
       </nav>
     </div>

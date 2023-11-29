@@ -8,6 +8,7 @@ import useFetch from '../../Hooks/useFetch';
 import { PHOTO_POST } from '../../Api';
 import Erro from '../../Helper/Erro';
 import { useNavigate } from 'react-router-dom';
+import getLocalStorage from '../../store/helper/getLocalStorage';
 
 const Postar = () => {
   const username = useValidate();
@@ -43,7 +44,7 @@ const Postar = () => {
       formData.append('peso', userPeso.dado)
       formData.append('idade', userIdade.dado)
 
-      const token = localStorage.getItem('token');
+      const token = getLocalStorage('token', null);
       const {url, options} = PHOTO_POST(formData, token); 
       const { response } = await request(url, options);
       if(response.ok) {

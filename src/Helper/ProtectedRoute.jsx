@@ -1,16 +1,16 @@
 import React from 'react';
-import { UserContext } from '../UserContext';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({children}) => {
-  const {login} = React.useContext(UserContext);
+  const {dados} = useSelector((state)=> state.login.user);
 
   // return login ? children : <Navigate to='/login' /> dessa forma o usuário irá para a página de login e ficará carregando e se o login for verdadeiro aí sim ele irá redirecionar para conta
 
-  if(login === true) {
+  if(dados) {
     return children;
   }
-  else if(login === false) {
+  else if(!dados) {
     return <Navigate to='/login' />
   }
   else{

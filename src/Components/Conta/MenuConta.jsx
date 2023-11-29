@@ -6,13 +6,14 @@ import {ReactComponent as SairFoto} from '../../../public/Assets/sair.svg';
 import { NavLink, useParams } from 'react-router-dom';
 import useMedia from '../../Hooks/useMedia';
 import style from './MenuConta.module.css';
-import {UserContext} from '../../UserContext';
+import { logOut } from '../../store/reducers/login';
+import { useDispatch } from 'react-redux';
 
 const MenuConta = () => {
   const mobile = useMedia('(max-width: 40rem)');
   const [mobileMenu, setMobileMenu] = React.useState(false);
-  const { userLogout} = React.useContext(UserContext);
   const parametros = useParams();
+  const dispatch = useDispatch();
 
   React.useEffect(()=>{
     setMobileMenu(false);
@@ -20,7 +21,7 @@ const MenuConta = () => {
   
 
   function handleLogout(){
-    userLogout();
+    dispatch(logOut());
   }
 
   return (

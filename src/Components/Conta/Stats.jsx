@@ -1,24 +1,24 @@
 import React from 'react';
 import Head from '../../Helper/Head';
-import {UserContext} from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
 import { GET_STATS } from '../../Api';
 import Carregando from '../../Helper/Carregando';
 import Erro from '../../Helper/Erro';
+import { useSelector } from 'react-redux';
 const StatsGraphs = React.lazy(()=> import('./StatsGraphs'));
 
 
 const Stats = () => {
-  const {tokenUser} = React.useContext(UserContext);
+  const {dados} = useSelector((state)=> state.login.token);
   const {data, erro, carregando, request} = useFetch();
 
   React.useEffect(()=>{
     async function fetchStats() {
-      const {url, options} = GET_STATS(tokenUser);
+      const {url, options} = GET_STATS(dados.token);
       await request(url, options);
     }
     fetchStats()
-  },[tokenUser, request]);
+  },[dados, request]);
 
   if(carregando) return <Carregando/>
   if(erro) return <Erro mensagem={erro} />
