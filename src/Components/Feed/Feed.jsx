@@ -15,11 +15,6 @@ const Feed = ({user}) => {
   const dispatch = useDispatch();
 
   React.useEffect(()=> {
-    //impede que seja feito o dispatch 2x no início devido ao scroll estar para baixo
-    window.scrollTo(0, 0);
-  }, []);
-
-  React.useEffect(()=> {
     dispatch(resetPhotos());
     dispatch(carregarNovasFotos({user, total: 6}));
   }, [dispatch, user]);

@@ -36,7 +36,15 @@ const fetchFeed = feed.asyncSlice;
 export const carregarNovasFotos = ({total = 6, user}) => async (dispatch, getState) => {
   const {feed} = getState();
   const {payload} = await dispatch(fetchFeed({page: feed.pages, total, user}));
-  dispatch(addPhotosInList(payload));
+  const lista = getState().feed.list;
+  const novaLista = [];
+  payload.forEach((elemento)=> {
+    if(lista.findIndex((photo)=> photo.id === elemento.id) === -1) {
+      novaLista.push(elemento);
+    }
+  }) 
+
+  dispatch(addPhotosInList(novaLista));
   dispatch(nextPage());
 }
 
