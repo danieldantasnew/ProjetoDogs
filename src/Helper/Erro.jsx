@@ -2,14 +2,10 @@ import React from 'react';
 import style from './Erro.module.css';
 import PropTypes from 'prop-types';
 
-const Erro = ({mensagem, telaInteira, setErro, setModalPhoto}) => {
+const Erro = ({mensagem, telaInteira}) => {
 
   function handleErro() {
-    if(setErro){
-      setModalPhoto(null);
-      setErro(null);
-      location.reload();
-    } 
+    if(telaInteira) location.reload();
   }
 
   return (

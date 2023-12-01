@@ -55,15 +55,6 @@ const fetchUser = user.asyncSlice;
 const {removeUser} = user.actions;
 const {removeToken} = token.actions;
 
-
-export const autoLogin = () => async (dispatch, getState) => {
-  const state = getState();
-  const {dados} = state.login.token;
-  if(dados.token){
-    await dispatch(fetchUser(dados.token));
-  }
-}
-
 export const login = (usuario) => async (dispatch) => {
   try{
     const {payload} = await dispatch(fetchToken(usuario));
@@ -74,12 +65,20 @@ export const login = (usuario) => async (dispatch) => {
   catch(erro){console.log(erro.message)}
 } 
 
-
 export const logOut = () => (dispatch) => {
   dispatch(removeUser());
   dispatch(removeToken());
   window.localStorage.removeItem('token');
 }
+
+export const autoLogin = () => async (dispatch, getState) => {
+  const state = getState();
+  const {dados} = state.login.token;
+  if(dados.token){
+    await dispatch(fetchUser(dados.token));
+  }
+}
+
 const reducer = combineReducers({token: token.reducer, user: user.reducer});
 
 export default reducer;

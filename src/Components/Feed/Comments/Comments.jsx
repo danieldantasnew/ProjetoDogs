@@ -9,10 +9,11 @@ import PhotoDelete from './PhotoDelete';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Comments = ({comentarios}) => {
+const Comments = () => {
 
   const {dados} = useSelector((state)=> state.login.token);
   const dataUser = useSelector((state)=> state.login.user);
+  const comentarios = useSelector((state)=> state.photo.dados);
   const [comentario, setComentario] = React.useState('');
   const [allComents, setAllComments] = React.useState([]); 
   const {erro, request} = useFetch();

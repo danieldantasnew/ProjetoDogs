@@ -6,32 +6,28 @@ import Comments from './Comments/Comments';
 import Skeleton from '../../Helper/Skeleton';
 import Carregando from '../../Helper/Carregando';
 import Error from '../../Helper/Erro';
+import { useDispatch, useSelector } from 'react-redux';
+import  { closeModal } from '../../store/reducers/getPhoto';
 
-const FeedModal = ({photoID, setModalPhoto, classe}) => {
-  const { setErro, erro, carregando, request} = useFetch();
-  const [photoData, setPhotoData] = React.useState(null);
+const FeedModal = ({classe}) => {
+  const {carregando, dados, erro} = useSelector((state)=> state.photo);
+  const {modal} = useSelector((state)=> state.photo)
+  const dispatch = useDispatch();
 
-  React.useEffect(()=> {
-    async function fetchImagem() {
-      const {url, options} = PHOTO_GET(photoID);
-      const { json } = await request(url, options);
-      setPhotoData(json);
-    }
-    fetchImagem();
-  },[photoID, request]);
 
   function handleModal (event) {
-    if(event.target === event.currentTarget && setModalPhoto) setModalPhoto(null);
+    if(event.target === event.currentTarget) dispatch(closeModal());
   }
 
+  if(!modal) return null;
   if(carregando) return <Carregando/>
-  if(erro) return <Error mensagem={erro} telaInteira={true} setErro={setErro} setModalPhoto={setModalPhoto}/>
+  if(erro) return <Error mensagem={erro} telaInteira={true}/>
 
   return (
     <div className={classe || style.modalPhoto} onClick={handleModal}>
       <div className={style.photo}>
-        <Skeleton src={photoData && photoData.photo.src} alt={photoData && photoData.photo.title}/>
-        <Comments comentarios={photoData}/>
+        <Skeleton src={dados && dados.photo.src} alt={dados && dados.photo.title}/>
+        <Comments/>
       </div>
     </div>
   )

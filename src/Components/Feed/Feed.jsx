@@ -7,14 +7,15 @@ import FeedModal from './FeedModal';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import { carregarNovasFotos, resetPhotos } from '../../store/reducers/feed';
+import { closeModal } from '../../store/reducers/getPhoto';
 
 
 const Feed = ({user}) => {
-  const [modalPhoto, setModalPhoto] = React.useState(null);
   const {infinite, list, carregando, erro} = useSelector((state)=> state.feed);
   const dispatch = useDispatch();
 
   React.useEffect(()=> {
+    dispatch(closeModal());
     dispatch(resetPhotos());
     dispatch(carregarNovasFotos({user, total: 6}));
   }, [dispatch, user]);
@@ -49,8 +50,8 @@ const Feed = ({user}) => {
   return (
     <div style={{marginTop: '2rem'}}>
       <Head title='Fotos' descricao='Página inicial, feed de fotos.'/>
-      {modalPhoto && <FeedModal photoID={modalPhoto.id} setModalPhoto={setModalPhoto}/>}
-      {list.length > 0 && <FeedPhotos setModalPhoto={setModalPhoto}/>}
+      {<FeedModal/>}
+      {list.length > 0 && <FeedPhotos/>}
       {carregando && <Carregando/>}
       {erro && <Erro/>}
       {!infinite && !user && <p style={{textAlign: 'center', padding: '2rem 0 4rem 0', color: 'var(--cor-fonte-footer)'}}>Não existem mais postagens.</p>}

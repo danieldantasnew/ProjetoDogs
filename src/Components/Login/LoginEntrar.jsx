@@ -8,7 +8,7 @@ import { useValidate } from '../../Hooks/useValidate';
 import Head from '../../Helper/Head';
 import Erro from '../../Helper/Erro';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/reducers/login';
+import { login, logOut } from '../../store/reducers/login';
 
 const LoginEntrar = () => {
   const username = useValidate('');
@@ -16,6 +16,14 @@ const LoginEntrar = () => {
   const dispatch = useDispatch();
   const {carregando, erro} = useSelector((state)=> state.login.user);
   const carregandoToken = useSelector((state)=> state.login.user.carregando);
+
+  React.useEffect(()=> {
+    if(erro) {
+      setTimeout(() => {
+        dispatch(logOut());
+      }, 3000);
+    }
+  }, [dispatch, erro])
 
 
   function handleSubmit(event){
