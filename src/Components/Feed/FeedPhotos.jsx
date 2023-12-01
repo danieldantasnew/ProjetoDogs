@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './FeedPhotos.module.css';
 import FeedPhotoItem from './FeedPhotoItem';
-
 import {useSelector} from 'react-redux';
 
 const FeedPhotos = () => {

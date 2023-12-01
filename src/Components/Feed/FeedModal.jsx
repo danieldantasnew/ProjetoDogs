@@ -1,7 +1,5 @@
 import React from 'react';
 import style from './FeedModal.module.css';
-import { PHOTO_GET } from '../../Api';
-import useFetch from '../../Hooks/useFetch';
 import Comments from './Comments/Comments';
 import Skeleton from '../../Helper/Skeleton';
 import Carregando from '../../Helper/Carregando';

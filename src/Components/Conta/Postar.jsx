@@ -47,6 +47,7 @@ const Postar = () => {
       const token = getLocalStorage('token', null);
       const {url, options} = PHOTO_POST(formData, token); 
       const { response } = await request(url, options);
+      //Também dá para usar o Redux no post, usando apenas o createAsyncSlice pois ele fará o fetch enviando os dados mas não é necessário já que não é um estado global (que eu queira utilizar em outras partes do código).
       if(response.ok) {
         setEnviado(true);
         setTimeout(()=> {
